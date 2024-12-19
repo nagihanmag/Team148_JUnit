@@ -37,6 +37,9 @@ public class C01_MavenIlkTestOtomasyonu {
         List<WebElement> bulunanElementleriList =driver.findElements(By.className("prod-img"));
 
 
+        if (bulunanElementleriList.size()>0){
+            System.out.printf("Urun arama testi PASSED");
+        }else System.out.printf("Urun arama testi FAILED");
 
 
 
