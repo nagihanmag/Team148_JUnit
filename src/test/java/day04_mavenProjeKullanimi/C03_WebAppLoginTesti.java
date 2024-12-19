@@ -20,13 +20,13 @@ public class C03_WebAppLoginTesti {
         //1. http://zero.webappsecurity.com sayfasina gidin
 
         driver.get("http://zero.webappsecurity.com");
-        ReusableMethods.bekle(1);
+
 
         //2. Signin buttonuna tiklayin
        driver.findElement(By.id("signin_button"))
         .click();
 
-        ReusableMethods.bekle(1);
+
 
         //3. Login alanine “username” yazdirin
         WebElement loginKutusu = driver.findElement(By.id("user_login"));
@@ -40,11 +40,11 @@ public class C03_WebAppLoginTesti {
         //5. Sign in buttonuna tiklayin
         driver.findElement(By.name("submit"))
                 .click();
-        ReusableMethods.bekle(1);
+
 
         //6. Back tusu ile sayfaya donun
         driver.navigate().back();
-        ReusableMethods.bekle(1);
+
 
 
         //7. Online Banking menusunden Pay Bills sayfasina gidin
@@ -52,7 +52,7 @@ public class C03_WebAppLoginTesti {
                 .click();
         driver.findElement(By.id("pay_bills_link"))
                 .click();
-        ReusableMethods.bekle(1);
+
 
         //8. amount kismina yatirmak istediginiz herhangi bir miktari yazin
         WebElement amountKutusu = driver.findElement(By.id("sp_amount"));
@@ -67,7 +67,7 @@ public class C03_WebAppLoginTesti {
         //10. Pay buttonuna tiklayin
         driver.findElement(By.id("pay_saved_payees"))
                 .click();
-        ReusableMethods.bekle(1);
+
 
         //11. “The payment was successfully submitted." mesajinin ciktigini test edin
         WebElement alertMesajElementi = driver.findElement(By.id("alert_content"));
