@@ -39,7 +39,7 @@ public class C04_GoogleTesti {
 
         //5- Arama cubuguna “Nutella” yazip aratin
 
-        WebElement aramaCubugu = driver.findElement(By.className("gLFyf"));
+        WebElement aramaCubugu = driver.findElement(By.xpath("//textarea[@name='q']"));
         aramaCubugu.sendKeys("Nutella"+ Keys.ENTER);
 
 
