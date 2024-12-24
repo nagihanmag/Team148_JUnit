@@ -3,19 +3,39 @@ package day05_jUnitFramework;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 
 public class C03_SetupVeTeardownMethodlari {
+    /*
+    Java da tekrar eden kodlari sevmeyiz
+
+    Bir test methodu olusturuldugun da basta olusturmamiz gereken driver objesi
+    ve sondaki kapatma islemi tum methodlar icin lazimdir
+
+    Her test methodun da bunlari tekrar tekrar olusturmak yerine method yapip
+    methodCall ile kullanmayi tercih edebiliriz
+     */
+    WebDriver driver;
+
+    public void setup(){
+        //Webdriver olusturupayarlari yapin
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+    }
+    public void teardown(){
+        ReusableMethods.bekle(2);
+        driver.quit();
+    }
+
+
     @Test
 
     public   void  testOtomasyonuTest(){
-
-        //Webdriver olusturupayarlari yapin
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        setup();
 
         //testotomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
@@ -28,18 +48,16 @@ public class C03_SetupVeTeardownMethodlari {
             System.out.println("Testotomastonu testi PASSED");
         }else System.out.println("Testotomasyonu testi FAILED");
 
+        teardown();
 
-        driver.quit();
+
+
     }
     @Test
 
     public   void  youtubeOtomasyonuTest(){
 
-        //Webdriver olusturupayarlari yapin
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       setup();
 
         //youtube anasayfaya gidin
         driver.get("https://www.youtube.com");
@@ -53,17 +71,13 @@ public class C03_SetupVeTeardownMethodlari {
         }else System.out.println("Youtube testi FAILED");
 
 
-        driver.quit();
+      teardown();
     }
     @Test
 
     public   void  wisequarterTest(){
 
-        //Webdriver olusturupayarlari yapin
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+      setup();
 
         //wisequarter anasayfaya gidin
         driver.get("https://www.wisequarter.com");
@@ -77,6 +91,6 @@ public class C03_SetupVeTeardownMethodlari {
         }else System.out.println("Wisequarte testi FAILED");
 
 
-        driver.quit();
+        teardown();
     }
 }
