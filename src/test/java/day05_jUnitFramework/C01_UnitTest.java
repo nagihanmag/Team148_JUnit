@@ -8,17 +8,17 @@ public class C01_UnitTest {
     public static void main(String[] args) {
 
 
-        // verilen bir tam sayiyi kontrol edip 3
-        //  pozitif bir tam sayi degilse " false"
+        // verilen bir tam sayiyi kontrol edip
+        //  3 pozitif bir tam sayi degilse " false"
         // 3 basamakli bir tam sayi ise "true" donduren bir method olusturun
-        sayiKontrolMethoduTestMethodu();
+      sayiKontrolMethodunuTestMethodu();
 
 
     }
 
     public static boolean sayiKontrol(int sayi) {
 
-        if (sayi >= 100 && sayi <= 999) {
+        if (sayi>= 100 && sayi<= 999) {
             return true;
         } else return false;
 
@@ -29,15 +29,15 @@ public class C01_UnitTest {
     //bir test method'u olusturun
 
 
-    public static void sayiKontrolMethoduTestMethodu() {
+    public static void sayiKontrolMethodunuTestMethodu() {
         Random random = new Random();
         boolean testSonucu = true;
 
         //  true dondurmesi gereken 10 degeri test edin
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
 
             int randomSayi = 100 + random.nextInt(899);
-            if (sayiKontrol(randomSayi) == false){ // demekki sayi kontrol methodu dogru calismiyor
+            if (sayiKontrol(randomSayi) == false){ // urettigimiz sayilar 100-999 arasinda ve
                                                    // sayikontrol methodu true dondurmeliydi
                                                    // demekki sayikontrol method'u dogru calismiyor
 
