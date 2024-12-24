@@ -1,5 +1,7 @@
 package day05_jUnitFramework;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,18 +9,9 @@ import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class C03_SetupVeTeardownMethodlari {
-    /*
-    Java da tekrar eden kodlari sevmeyiz
-
-    Bir test methodu olusturuldugun da basta olusturmamiz gereken driver objesi
-    ve sondaki kapatma islemi tum methodlar icin lazimdir
-
-    Her test methodun da bunlari tekrar tekrar olusturmak yerine method yapip
-    methodCall ile kullanmayi tercih edebiliriz
-     */
+public class C04_BeforeAfterNotasyonlari {
     WebDriver driver;
-
+    @BeforeEach
     public void setup(){
         //Webdriver olusturupayarlari yapin
         driver = new ChromeDriver();
@@ -27,6 +20,7 @@ public class C03_SetupVeTeardownMethodlari {
 
     }
 
+    @AfterEach
     public void teardown(){
         ReusableMethods.bekle(2);
         driver.quit();
@@ -35,8 +29,6 @@ public class C03_SetupVeTeardownMethodlari {
 
     @Test
     public   void  testOtomasyonuTest(){
-        setup();
-
         //testotomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
 
@@ -48,7 +40,7 @@ public class C03_SetupVeTeardownMethodlari {
             System.out.println("Testotomastonu testi PASSED");
         }else System.out.println("Testotomasyonu testi FAILED");
 
-        teardown();
+
 
 
 
@@ -56,9 +48,6 @@ public class C03_SetupVeTeardownMethodlari {
 
     @Test
     public   void  youtubeOtomasyonuTest(){
-
-       setup();
-
         //youtube anasayfaya gidin
         driver.get("https://www.youtube.com");
 
@@ -71,14 +60,11 @@ public class C03_SetupVeTeardownMethodlari {
         }else System.out.println("Youtube testi FAILED");
 
 
-      teardown();
+
     }
 
     @Test
     public   void  wisequarterTest(){
-
-      setup();
-
         //wisequarter anasayfaya gidin
         driver.get("https://www.wisequarter.com");
 
@@ -91,6 +77,6 @@ public class C03_SetupVeTeardownMethodlari {
         }else System.out.println("Wisequarte testi FAILED");
 
 
-        teardown();
+
     }
 }
