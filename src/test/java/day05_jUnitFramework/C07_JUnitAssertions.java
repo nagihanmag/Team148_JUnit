@@ -1,6 +1,7 @@
 package day05_jUnitFramework;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -13,8 +14,7 @@ import utilities.ReusableMethods;
 import java.time.Duration;
 import java.util.List;
 
-public class C06_Assertions {
-
+public class C07_JUnitAssertions {
     // 3 farkli test method'u olusturarak asagidaki testleri gerceklestirin
     // 1- Test otomasyonu anasayfaya gidin
     //    Url'in test otomasyonu icerdigini test edin
@@ -22,28 +22,7 @@ public class C06_Assertions {
     //    ve arama sonucunda urun bulunabildigini test edin
     // 3- ilk urunu tiklayin
     //    ve acilan sayfadaki urun isminde case sensitive olmadan "phone" bulundugunu test edin
-     /*
-        JUnit bir test method'unun
-        PASSED veya FAILED olmasina
-        kodlarin sorunsuz olarak calisip bitip bitmemesine gore karar verir
 
-        Biz if-else ile test yaparsak
-        if else FAILED yazdirsa bile
-        kodlar problem olmadan calismaya devam ettigi icin
-        method'un sonunda JUnit test PASSED olarak algilar
-        ve yesil tik koyar
-
-        Ozellikle toplu test calistirmalarda
-        konsolu inceleyip
-        birsuru yazi arasinda
-        Test PASSED veya test FAILED sonucunu aramak
-        ve kac testin failed oldugunu hesaplamak
-        neredeyse imkansizdir
-
-        Eger if ile test yapiyorsak
-        ve failed oldugunda JUnit'in de bunu algilamasini istiyorsak
-        throw keyword'u ile kontrollu olarak exception olusturabiliriz
-     */
 
 
     static WebDriver driver;
@@ -67,16 +46,10 @@ public class C06_Assertions {
         driver.get("https://www.testotomasyonu.com");
         //    Url'in testotomasyonu icerdigini test edin
         ReusableMethods.bekle(2);
-        String expectedUrlIcerik = "testotomasyonu1";
+        String expectedUrlIcerik = "testotomasyonu";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.contains(expectedUrlIcerik)){
-            System.out.println("Anasayafa testi PASSED");
-        }else {
-            System.out.println("Anasayafa testi FAILED");
-            throw new RuntimeException("actuaUrl expectedUrl'den farkli");
-        }
-
+        Assertions.assertTrue(  actualUrl.contains(expectedUrlIcerik) ,"Url beklendigi gibi degil" );
     }
 
     @Test
@@ -91,12 +64,7 @@ public class C06_Assertions {
 
         int actualBulunanUrunSayisi = bulunanUrunElementleriList.size();
 
-        if (actualBulunanUrunSayisi > 10){
-            System.out.println("Urun bulma testi PASSED");
-        } else {
-            System.out.println("Urun bulma testi FAILED");
-            throw new RuntimeException("Urun bulunamadi");
-        }
+        Assertions.assertTrue(actualBulunanUrunSayisi > 0,"Arama sonucunda urun bulunamadi");
 
     }
 
@@ -111,14 +79,10 @@ public class C06_Assertions {
 
         WebElement ilkUrunIsimElementi = driver.findElement(By.xpath("//*[@class=' heading-sm mb-4']"));
 
-        String expectedIsimIcerik = "phonexxxxxx";
+        String expectedIsimIcerik = "phone";
         String actualUrunIsmi = ilkUrunIsimElementi.getText().toLowerCase();
 
-        if (actualUrunIsmi.contains(expectedIsimIcerik)){
-            System.out.println("Ilk urun isim testi PASSED");
-        }else  {
-            System.out.println("Ilk urun isim testi FAILED");
-            throw new RuntimeException("Ilk urun ismi expected kelimeyi icermiyor");
-        }
+        Assertions.assertTrue(actualUrunIsmi.contains(expectedIsimIcerik),"Urun ismi phone icermiyor");
 
-    }}
+    }
+}
