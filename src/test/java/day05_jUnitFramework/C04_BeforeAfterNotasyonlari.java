@@ -2,6 +2,7 @@ package day05_jUnitFramework;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,7 @@ import java.time.Duration;
 
 public class C04_BeforeAfterNotasyonlari {
     WebDriver driver;
+
     @BeforeEach
     public void setup(){
         //Webdriver olusturupayarlari yapin
@@ -27,7 +29,7 @@ public class C04_BeforeAfterNotasyonlari {
     }
 
 
-    @Test
+    @Test @Disabled  // calistirmaz
     public   void  testOtomasyonuTest(){
         //testotomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
