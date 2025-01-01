@@ -1,6 +1,9 @@
 package day07_jsAlerts_iFrame;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBaseEach;
 
@@ -18,9 +21,14 @@ public class C03_BasicAuthentication extends TestBaseEach {
         //Html komutu : https://username:password@URL
         //	Username     : membername
         // 	password      : sunflower
+        driver.get(" https://membername:sunflower@testotomasyonu.com/basicauth");
 
         //4- Basarili bir sekilde sayfaya girildigini dogrulayin
-        driver.get(" https://membername:sunflower@testotomasyonu.com/basicauth");
+
+
+        WebElement basicAuthYaziElementi = driver.findElement(By.tagName("h1"));
+        Assertions.assertTrue(basicAuthYaziElementi.isDisplayed());
+
 
         /*
          driver.get("https://testotomasyonu.com/basicauth");
