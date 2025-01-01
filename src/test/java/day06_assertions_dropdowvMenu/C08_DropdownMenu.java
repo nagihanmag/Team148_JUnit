@@ -82,7 +82,12 @@ public class C08_DropdownMenu extends TestBaseEach {
 
         //String expectedYazi ="Foreign currency cash was successfully purchased.";
        // String actualYazi = driver.getCurrentUrl();
-        Assertions.assertTrue(yaziCiktisi.isDisplayed());
+       // Assertions.assertTrue(yaziCiktisi.isDisplayed());
+        String expectedYaziTest = "Foreign currency cash was successfully purchased.";
+        WebElement actualyYaziTest = driver.findElement(By.id("alert_content"));
+        Assertions.assertTrue(actualyYaziTest.getText().contains(expectedYaziTest));
+
+
 
         ReusableMethods.bekle(2);
 
