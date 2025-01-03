@@ -38,10 +38,6 @@ public class C09_KeybordActions extends TestBaseEach {
 
 
         //3- Bulunan urun isminde “DELL Core I3” bulundugunu test edin
-
-
-
-
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
        String expectedisim ="DELL Core I3";
