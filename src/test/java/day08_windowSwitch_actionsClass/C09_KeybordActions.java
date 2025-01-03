@@ -1,5 +1,6 @@
 package day08_windowSwitch_actionsClass;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -33,10 +34,23 @@ public class C09_KeybordActions extends TestBaseEach {
                 .keyUp(Keys.SHIFT)
                 .sendKeys("3")
                 .sendKeys(Keys.ENTER).perform();
+        ReusableMethods.bekle(10);
 
 
         //3- Bulunan urun isminde “DELL Core I3” bulundugunu test edin
 
+
+
+
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+       String expectedisim ="DELL Core I3";
+
+        WebElement UrunIsim =driver.findElement(By.xpath("//*[@class='prod-title mb-3 ']"));
+
+        String actualIsim = UrunIsim.getText();
+
+        Assertions.assertTrue(actualIsim.contains(expectedisim));
 
     }
 }
