@@ -20,6 +20,7 @@ public class C06_Actions_ContextClick extends TestBaseEach {
         driver.get(" https://testotomasyonu.com/click");
 
         //2- “DGI Drones” uzerinde sag click yapin
+
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.bekle(1);
